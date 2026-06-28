@@ -396,7 +396,7 @@
                             </div>
                             <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Ungkapan Santun</h3>
                             <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
-                                Pembiasaan perkataan ajaib asas harian seperti <em>"Tolong"</em>, <em>"Terima Kasih"</em>, dan <em>"Maaf"</em>.
+                                Pembiasaan perkataan ajaib asas harian seperti <em>"Tolong"</em>, <em>"Terima Kasih"</em>, and <em>"Maaf"</em>.
                             </p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
@@ -813,8 +813,6 @@
                             </a>
                         </div>
 
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -885,37 +883,40 @@
                         <h3 class="font-serif-elegant text-2xl font-bold text-primary-900 mb-6">Hantar Mesej Anda</h3>
                         
                         <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                            <!-- Hidden token field for alternative services if needed in future -->
+                            <input type="hidden" name="access_key" value="tfp_7XU2ugurekR7Ez44647WHMNZ1dsx5J5PTbo4eJ42eTD_3suHXH8XizF3sv">
+                            
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Penuh</label>
-                                    <input type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Sila masukkan nama penuh anda">
+                                    <input type="text" name="Nama" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Sila masukkan nama penuh anda">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Alamat E-mel</label>
-                                    <input type="email" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="nama@domain.com">
+                                    <input type="email" name="Emel" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="nama@domain.com">
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Subjek Perbincangan</label>
-                                <select class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm">
-                                    <option>Pertanyaan Umum</option>
-                                    <option>Cadangan Kandungan</option>
-                                    <option>Kerjasama Pendidikan</option>
-                                    <option>Aduan Tatabahasa/Kesantunan</option>
-                                    <option>Lain-lain</option>
+                                <select name="Subjek" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm">
+                                    <option value="Pertanyaan Umum">Pertanyaan Umum</option>
+                                    <option value="Cadangan Kandungan">Cadangan Kandungan</option>
+                                    <option value="Kerjasama Pendidikan">Kerjasama Pendidikan</option>
+                                    <option value="Aduan Tatabahasa/Kesantunan">Aduan Tatabahasa/Kesantunan</option>
+                                    <option value="Lain-lain">Lain-lain</option>
                                 </select>
                             </div>
 
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Butiran Mesej / Cadangan</label>
-                                <textarea rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Tuliskan ulasan atau cadangan anda secara sopan..."></textarea>
+                                <textarea name="Mesej" rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Tuliskan ulasan atau cadangan anda secara sopan..."></textarea>
                             </div>
 
                             <!-- Form Status Message Inside Form (Avoid alert) -->
-                            <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+                            <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium transition-all duration-300"></div>
 
-                            <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl shadow-md transition-colors inline-flex items-center justify-center gap-2">
+                            <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl shadow-md transition-all inline-flex items-center justify-center gap-2">
                                 <i data-lucide="send" class="w-4 h-4"></i> Hantar Maklum Balas
                             </button>
                         </form>
@@ -1093,20 +1094,6 @@
         }
 
         // Mobile Menu Toggling
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-menu-icon');
-            
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.setAttribute('data-lucide', 'x');
-            } else {
-                menu.classList.add('hidden');
-                icon.setAttribute('data-lucide', 'menu');
-            }
-            lucide.createIcons();
-        }
-
         // Switch Tabs for Section B (Sistem Bahasa)
         function switchSistemTab(index) {
             // Uncheck active tabs
@@ -1261,6 +1248,21 @@
             lucide.createIcons();
         }
 
+        // Mobile Menu Toggling
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
         // Handle Interactive Detail Modals for Gaya Kesantunan
         function showInteractiveDetail(category, index) {
             const titleEl = document.getElementById('modal-title');
@@ -1323,7 +1325,7 @@
                                     <p>Yang baik itu budi,</p>
                                     <p>Yang indah itu bahasa.</p>
                                 </div>
-                                <p class="text-sm text-slate-600">Pantun di atas menunjukkan betapa tingginya nilai budi dan bahasa berbanding perkara-perkara fizikal di dunia ini.</p>
+                                <p class="text-sm text-slate-600">Pantun di atas menunjukkan betapa tingginya nilai budi and bahasa berbanding perkara-perkara fizikal di dunia ini.</p>
                             </div>
                         `;
                         break;
@@ -1543,29 +1545,67 @@
             document.getElementById('global-modal').classList.add('hidden');
         }
 
-        // Contact Form Submission Handler (Mock - No page refresh)
+        // Contact Form Submission Handler (Integrated with user's Google App Script URL)
         function handleContactSubmit(event) {
             event.preventDefault();
+            const form = event.target;
             const feedback = document.getElementById('form-feedback');
-            
-            feedback.className = "p-4 rounded-xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-100";
-            feedback.innerHTML = `
-                <div class="flex items-start gap-2">
-                    <span class="text-base">🎉</span>
-                    <div>
-                        <strong>Terima Kasih!</strong> Maklum balas anda telah berjaya dihantar ke <strong>zulhaialduramin28@gmail.com</strong>. Sidang redaksi akan berhubung secepat mungkin.
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnHTML = submitBtn.innerHTML;
+
+            // Set loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Menghantar...`;
+            lucide.createIcons();
+
+            // Clear previous feedback
+            feedback.className = "hidden p-4 rounded-xl text-sm font-medium";
+            feedback.innerHTML = "";
+
+            const formData = new FormData(form);
+            const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwJpieJfDrLXvQJxmOqW3d9WYmkUUJfWYpCJpIa81bnj3wv8qlU4LWoP6Fow0auqR5Y/exec';
+
+            fetch(googleScriptUrl, { 
+                method: 'POST', 
+                body: formData 
+            })
+            .then(response => {
+                // Show success feedback
+                feedback.className = "p-4 rounded-xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-100 block";
+                feedback.innerHTML = `
+                    <div class="flex items-start gap-2">
+                        <span class="text-base">🎉</span>
+                        <div>
+                            <strong>Terima Kasih!</strong> Mesej anda berjaya disimpan ke sistem pangkalan data (Google Sheets). Salinan maklum balas juga akan dipantau oleh sidang redaksi kami melalui <strong>zulhaialduramin28@gmail.com</strong>.
+                        </div>
                     </div>
-                </div>
-            `;
-            feedback.classList.remove('hidden');
+                `;
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                // Show failure warning but gracefully
+                feedback.className = "p-4 rounded-xl text-sm font-medium bg-amber-50 text-amber-800 border border-amber-100 block";
+                feedback.innerHTML = `
+                    <div class="flex items-start gap-2">
+                        <span class="text-base">⚠️</span>
+                        <div>
+                            <strong>Pemberitahuan:</strong> Penghantaran API terus menghadapi sedikit rintangan rangkaian, namun anda boleh menghantar emel maklum balas anda secara terus ke <strong>zulhaialduramin28@gmail.com</strong>.
+                        </div>
+                    </div>
+                `;
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+                lucide.createIcons();
 
-            setTimeout(() => {
-                event.target.reset();
-            }, 500);
-
-            setTimeout(() => {
-                feedback.classList.add('hidden');
-            }, 8000);
+                // Auto-hide feedback message after 10 seconds
+                setTimeout(() => {
+                    feedback.classList.add('hidden');
+                }, 10000);
+            });
         }
 
         // Newsletter Subscription Handler (Mock - No page refresh)
@@ -1582,6 +1622,7 @@
 
             setTimeout(() => {
                 feedback.classList.add('hidden');
+                feedback.className = "text-xs hidden pt-1";
             }, 5000);
         }
     </script>
