@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SantunBahasa.my - Melestarikan Kesantunan Berbahasa</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for premium visual look -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f5f8fa',
+                            100: '#ebf1f5',
+                            500: '#1e5f74',
+                            600: '#174d5f',
+                            700: '#123c4b',
+                            900: '#0d222b',
+                        },
+                        secondary: {
+                            50: '#fffbf0',
+                            500: '#cca43b',
+                            600: '#b08a2e',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&display=swap');
+        .font-serif-elegant {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        .hero-pattern {
+            background-color: #123c4b;
+            background-image: radial-gradient(circle at 100% 150%, #1e5f74 24%, #123c4b 25%, #123c4b 28%, #1e5f74 29%, #1e5f74 36%, #123c4b 36%, #123c4b 40%, #1e5f74 41%, #1e5f74 48%, #123c4b 49%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col selection:bg-secondary-500 selection:text-white pb-20">
+
+    <!-- Top Alert/Notification Bar for Elegant UI -->
+    <div class="bg-primary-900 text-slate-300 text-xs py-2 px-4 text-center border-b border-primary-700">
+        <span class="inline-flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            "Bahasa Menunjukkan Bangsa" — Ayuh amalkan kesantunan berbahasa dalam kehidupan seharian kita.
+        </span>
+    </div>
+
+    <!-- Background Music Player (Sourcing online active loop audio) -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="p-2.5 bg-primary-500 rounded-xl text-white shadow-md shadow-primary-500/20">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif-elegant font-bold text-2xl tracking-tight text-primary-500">SantunBahasa</span>
+                        <span class="text-secondary-500 font-bold text-xl leading-none">.my</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden xl:flex space-x-1 lg:space-x-2">
+                    <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 text-primary-500 font-semibold bg-primary-50">Utama</button>
+                    <button onclick="navigateTo('gaya')" id="nav-gaya" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 text-slate-600 hover:text-primary-500">Gaya Kesantunan</button>
+                    <button onclick="navigateTo('sistem')" id="nav-sistem" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 text-slate-600 hover:text-primary-500">Sistem Bahasa</button>
+                    <button onclick="navigateTo('isu')" id="nav-isu" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 text-slate-600 hover:text-primary-500">Isu Semasa</button>
+                    <button onclick="navigateTo('cadangan')" id="nav-cadangan" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 text-slate-600 hover:text-primary-500">Cadangan & Solusi</button>
+                    <button onclick="navigateTo('rujuan')" id="nav-rujuan" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 text-slate-600 hover:text-primary-500">Rujukan</button>
+                    <button onclick="navigateTo('hubungi')" id="nav-hubungi" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 text-slate-600 hover:text-primary-500">Hubungi Kami</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-2 xl:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-500 hover:text-primary-500 hover:bg-slate-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu utama</span>
+                        <i id="mobile-menu-icon" data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu, show/hide based on menu state. -->
+        <div class="hidden xl:hidden bg-white border-t border-slate-100" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <button onclick="navigateTo('home')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-primary-500 bg-primary-50">Utama</button>
+                <button onclick="navigateTo('gaya')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-primary-500 hover:bg-slate-50">Gaya Kesantunan</button>
+                <button onclick="navigateTo('sistem')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-primary-500 hover:bg-slate-50">Sistem Bahasa</button>
+                <button onclick="navigateTo('isu')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-primary-500 hover:bg-slate-50">Isu Semasa</button>
+                <button onclick="navigateTo('cadangan')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-primary-500 hover:bg-slate-50">Cadangan & Solusi</button>
+                <button onclick="navigateTo('rujuan')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-primary-500 hover:bg-slate-50">Rujukan</button>
+                <button onclick="navigateTo('hubungi')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-primary-500 hover:bg-slate-50">Hubungi Kami</button>
+            </div>
+            <div class="p-4 border-t border-slate-100">
+                <button onclick="navigateTo('cadangan')" class="w-full py-2.5 text-center text-sm font-medium text-white bg-primary-500 rounded-lg hover:bg-primary-600 transition-colors">
+                    Pelan Tindakan
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container with Dynamic Views -->
+    <main class="flex-grow">
+
+        <!-- ==================== VIEW 1: HOME PAGE ==================== -->
+        <section id="view-home" class="view-section">
+            <!-- Hero Section -->
+            <div class="hero-pattern text-white py-16 lg:py-24 relative overflow-hidden">
+                <div class="absolute inset-0 bg-slate-900/40"></div>
+                <!-- Artistic overlay background pattern -->
+                <div class="absolute inset-y-0 right-0 w-1/2 opacity-10 pointer-events-none hidden lg:block">
+                    <svg class="w-full h-full text-white" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor">
+                        <path d="M0 100 C 20 0, 50 0, 100 80 L 100 100 Z"></path>
+                    </svg>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-secondary-500 text-primary-900 tracking-wider uppercase shadow-sm">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Pemangkin Budaya Bangsa
+                            </span>
+                            <h1 class="font-serif-elegant text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+                                Melestarikan Kesantunan Berbahasa, <span class="text-secondary-500">Membina Tamadun</span> Bangsa.
+                            </h1>
+                            <p class="text-slate-200 text-lg sm:text-xl font-light max-w-2xl mx-auto lg:mx-0">
+                                "Bahasa Menunjukkan Bangsa. Terokai seni, peraturan, dan kepentingan kesantunan berbahasa dalam era digital."
+                            </p>
+                            <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                                <button onclick="navigateTo('gaya')" class="px-8 py-4 bg-secondary-500 hover:bg-secondary-600 text-primary-900 font-semibold rounded-xl shadow-lg shadow-secondary-500/20 transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+                                    Terokai Sekarang <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                </button>
+                                <button onclick="navigateTo('isu')" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl border border-white/20 transition-all backdrop-blur-sm inline-flex items-center justify-center gap-2">
+                                    <i data-lucide="alert-triangle" class="w-5 h-5"></i> Baca Isu Semasa
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lg:col-span-5 flex justify-center">
+                            <!-- Premium Illustrated Placeholder Container mimicking beautiful cultural interaction -->
+                            <div class="relative w-full max-w-md aspect-square bg-gradient-to-tr from-primary-600 to-primary-500 rounded-3xl p-6 shadow-2xl border border-white/10 overflow-hidden group">
+                                <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-secondary-500/20 via-transparent to-transparent"></div>
+                                <div class="relative h-full flex flex-col justify-between">
+                                    <div class="flex justify-between items-start">
+                                        <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 text-white border border-white/10">
+                                            <i data-lucide="users" class="w-6 h-6 text-secondary-500"></i>
+                                        </div>
+                                        <span class="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-slate-100 border border-white/10">Interaksi Harmoni</span>
+                                    </div>
+                                    
+                                    <!-- Simple and beautiful illustration vector graphics of multicultural smile-interact -->
+                                    <div class="my-auto py-6 flex justify-center items-center">
+                                        <svg class="w-48 h-48 text-white/90 transform group-hover:scale-105 transition-transform duration-500" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" class="animate-[spin_40s_linear_infinite]" />
+                                            <path d="M60 110 L100 80 L140 110 Z" fill="url(#grad1)" opacity="0.3"/>
+                                            <circle cx="70" cy="115" r="22" fill="#cca43b" />
+                                            <circle cx="130" cy="115" r="22" fill="#1e5f74" />
+                                            <path d="M40 160 C40 135, 100 135, 100 160 Z" fill="currentColor" opacity="0.8" />
+                                            <path d="M100 160 C100 135, 160 135, 160 160 Z" fill="currentColor" opacity="0.6" />
+                                            <path d="M64 118 Q70 124 76 118" stroke="#123c4b" stroke-width="2" stroke-linecap="round"/>
+                                            <path d="M124 118 Q130 124 136 118" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                            <defs>
+                                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#cca43b;stop-opacity:1" />
+                                                    <stop offset="100%" style="stop-color:#1e5f74;stop-opacity:1" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+
+                                    <div class="bg-primary-900/60 backdrop-blur-md rounded-2xl p-4 border border-white/5 text-center">
+                                        <p class="text-xs text-secondary-500 font-bold uppercase tracking-wider">Keharmonian Kaum</p>
+                                        <p class="text-sm font-medium mt-1">Interaksi mesra pelbagai lapisan masyarakat Malaysia</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pengenalan Ringkas -->
+            <div class="py-16 bg-white">
+                <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+                    <div class="inline-flex p-3 bg-primary-50 rounded-2xl text-primary-500">
+                        <i data-lucide="info" class="w-8 h-8"></i>
+                    </div>
+                    <h2 class="font-serif-elegant text-3xl font-bold text-primary-900">Selamat datang ke Portal SantunBahasa</h2>
+                    <div class="w-24 h-1 bg-secondary-500 mx-auto rounded-full"></div>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Selamat datang ke Portal SantunBahasa. Platform ini didedikasikan untuk memartabatkan amalan kesantunan berbahasa dalam masyarakat. Ketahui bagaimana gaya bahasa, sistem tatabahasa, dan penyelesaian isu semasa mampu membentuk masyarakat yang lebih harmoni.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Portal Pillars Quick View -->
+            <div class="py-16 bg-slate-50 border-t border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <h3 class="text-xs font-semibold text-secondary-600 uppercase tracking-widest">Empat Tonggak Utama</h3>
+                        <p class="font-serif-elegant text-2xl sm:text-3xl font-bold text-primary-900 mt-2">Laluan Pembelajaran Kesantunan</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Card 1 -->
+                        <div onclick="navigateTo('gaya')" class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-primary-100 transition-all cursor-pointer group">
+                            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                                <i data-lucide="palette" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-serif-elegant text-lg font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Gaya Kesantunan</h4>
+                            <p class="text-slate-500 text-sm mt-2 line-clamp-2">Seni komunikasi budaya Melayu termasuk sapaan, pantun, dan kiasan.</p>
+                            <span class="inline-flex items-center text-xs font-semibold text-primary-500 mt-4 group-hover:underline">Terokai lanjut <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
+                        </div>
+                        <!-- Card 2 -->
+                        <div onclick="navigateTo('sistem')" class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-primary-100 transition-all cursor-pointer group">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                <i data-lucide="sliders" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-serif-elegant text-lg font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Sistem Bahasa</h4>
+                            <p class="text-slate-500 text-sm mt-2 line-clamp-2">Aspek teknikal tatabahasa, ejaan, laras bahasa, dan intonasi suara.</p>
+                            <span class="inline-flex items-center text-xs font-semibold text-primary-500 mt-4 group-hover:underline">Terokai lanjut <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
+                        </div>
+                        <!-- Card 3 -->
+                        <div onclick="navigateTo('isu')" class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-primary-100 transition-all cursor-pointer group">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-5 group-hover:bg-red-500 group-hover:text-white transition-colors">
+                                <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-serif-elegant text-lg font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Isu & Cabaran</h4>
+                            <p class="text-slate-500 text-sm mt-2 line-clamp-2">Menganalisis kemerosotan bahasa di alam siber, sekolah, dan komuniti.</p>
+                            <span class="inline-flex items-center text-xs font-semibold text-primary-500 mt-4 group-hover:underline">Terokai lanjut <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
+                        </div>
+                        <!-- Card 4 -->
+                        <div onclick="navigateTo('cadangan')" class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-primary-100 transition-all cursor-pointer group">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                                <i data-lucide="check-square" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-serif-elegant text-lg font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Pelan Tindakan</h4>
+                            <p class="text-slate-500 text-sm mt-2 line-clamp-2">Solusi dan cadangan pembaikan untuk pelbagai sektor sosial masyarakat.</p>
+                            <span class="inline-flex items-center text-xs font-semibold text-primary-500 mt-4 group-hover:underline">Terokai lanjut <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== VIEW 2: GAYA KESANTUNAN ==================== -->
+        <section id="view-gaya" class="view-section hidden">
+            <div class="bg-primary-50 py-12 border-b border-primary-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div>
+                            <span class="text-xs font-bold text-primary-500 uppercase tracking-widest">Seksyen A</span>
+                            <h1 class="font-serif-elegant text-3xl sm:text-4xl font-bold text-primary-900 mt-1">Seni & Gaya Kesantunan Berbahasa</h1>
+                            <p class="text-slate-600 mt-2 max-w-3xl">Bahagian ini memaparkan contoh amalan bahasa santun dalam budaya kita.</p>
+                        </div>
+                        <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-100 flex items-center gap-2 self-start md:self-auto">
+                            <span class="w-2.5 h-2.5 rounded-full bg-secondary-500"></span>
+                            <span class="text-xs font-medium text-slate-500">Amalan Budaya</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Layout 6 Kad Interaktif -->
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Kad 1: Bahasa Sapaan -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-lucide="user-check" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Bahasa Sapaan</h3>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
+                                Penggunaan kata gelaran (Pak Cik, Puan, Yang Berhormat) mengikut status sosial penerima.
+                            </p>
+                            <!-- Verbatim reference element inside card -->
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-500 flex items-center gap-2 mb-4">
+                                <i data-lucide="file-image" class="w-4 h-4 shrink-0 text-amber-600"></i>
+                                <span>Peta Minda: <strong class="font-medium text-slate-700">kata gelaran.png</strong></span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Adab Bersosial</span>
+                            <button onclick="showInteractiveDetail('gaya', 1)" class="text-xs font-semibold text-primary-500 hover:underline inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 px-3 py-1.5 rounded-lg transition-colors">Lihat Contoh <i data-lucide="eye" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Kad 2: Bahasa Kiasan & Peribahasa -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-lucide="feather" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Bahasa Kiasan & Peribahasa</h3>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
+                                Menyampaikan teguran atau nasihat secara berlapik (contoh: seperti pahat dengan penukul).
+                            </p>
+                            <!-- Verbatim reference element inside card -->
+                            <div class="p-3 bg-slate-80 rounded-xl border border-slate-100 text-xs text-slate-500 flex items-center gap-2 mb-4">
+                                <i data-lucide="file-image" class="w-4 h-4 shrink-0 text-blue-600"></i>
+                                <span>Infografik: <strong class="font-medium text-slate-700">peribahasa.png</strong></span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">Sastera & Seni</span>
+                            <button onclick="showInteractiveDetail('gaya', 2)" class="text-xs font-semibold text-primary-500 hover:underline inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 px-3 py-1.5 rounded-lg transition-colors">Lihat Contoh <i data-lucide="eye" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Kad 3: Pantun -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-lucide="music" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Pantun</h3>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
+                                Melayu kaya dengan pantun nasihat dan jenaka yang mengekalkan adab kesopanan serta keindahan rima lisan.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2.5 py-1 rounded-md">Kesusasteraan</span>
+                            <button onclick="showInteractiveDetail('gaya', 3)" class="text-xs font-semibold text-primary-500 hover:underline inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 px-3 py-1.5 rounded-lg transition-colors">Lihat Contoh <i data-lucide="eye" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Kad 4: Pengurusan Air Muka -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-lucide="shield-alert" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Pengurusan Air Muka</h3>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
+                                Menjaga maruah dan perasaan orang lain ketika berbicara atau menegur di khalayak ramai.
+                            </p>
+                            <!-- Verbatim reference element inside card -->
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-500 flex items-center gap-2 mb-4">
+                                <i data-lucide="file-image" class="w-4 h-4 shrink-0 text-red-600"></i>
+                                <span>Grafik: <strong class="font-medium text-slate-700">cara jaga air muka.png</strong></span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-medium text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Psikologi Adab</span>
+                            <button onclick="showInteractiveDetail('gaya', 4)" class="text-xs font-semibold text-primary-500 hover:underline inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 px-3 py-1.5 rounded-lg transition-colors">Lihat Contoh <i data-lucide="eye" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Kad 5: Bahasa Terbalik -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-lucide="refresh-cw" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Bahasa Terbalik</h3>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
+                                Penggunaan sindiran halus yang bertujuan untuk mendidik tanpa mengguris hati secara kasar.
+                            </p>
+                            <!-- Verbatim reference element inside card -->
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-500 flex items-center gap-2 mb-4">
+                                <i data-lucide="file-image" class="w-4 h-4 shrink-0 text-emerald-600"></i>
+                                <span>Skenario: <strong class="font-medium text-slate-700">skenario.png</strong></span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">Ironi & Didikan</span>
+                            <button onclick="showInteractiveDetail('gaya', 5)" class="text-xs font-semibold text-primary-500 hover:underline inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 px-3 py-1.5 rounded-lg transition-colors">Lihat Contoh <i data-lucide="eye" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Kad 6: Ungkapan Santun -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-lucide="heart" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Ungkapan Santun</h3>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
+                                Pembiasaan perkataan ajaib asas harian seperti <em>"Tolong"</em>, <em>"Terima Kasih"</em>, dan <em>"Maaf"</em>.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Asas Komunikasi</span>
+                            <button onclick="showInteractiveDetail('gaya', 6)" class="text-xs font-semibold text-primary-500 hover:underline inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 px-3 py-1.5 rounded-lg transition-colors">Lihat Contoh <i data-lucide="eye" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== VIEW 3: KESANTUNAN SISTEM BAHASA ==================== -->
+        <section id="view-sistem" class="view-section hidden">
+            <div class="bg-primary-50 py-12 border-b border-primary-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <span class="text-xs font-bold text-primary-500 uppercase tracking-widest">Seksyen B</span>
+                    <h1 class="font-serif-elegant text-3xl sm:text-4xl font-bold text-primary-900 mt-1">Kesantunan Berbahasa dalam Sistem Bahasa</h1>
+                    <p class="text-slate-600 mt-2 max-w-3xl">Kesantunan juga diukur melalui ketepatan peraturan teknikal bahasa yang sesuai mengikut konteks komunikasi.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Interactive Infographic Tabs & Table Layout -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-6 sm:p-10 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
+                        <h2 class="font-serif-elegant text-2xl font-bold text-primary-900">Panduan Sistem Bahasa yang Santun</h2>
+                        <p class="text-sm text-slate-500 mt-1">Berikut adalah 4 dimensi utama pematuhan etika sistem bahasa dalam penulisan dan pertuturan harian.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12">
+                        <!-- Navigation Sidebar -->
+                        <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-100 p-6 bg-slate-50/50 space-y-2">
+                            <button onclick="switchSistemTab(0)" id="sistab-0" class="sistab-btn w-full text-left p-4 rounded-xl transition-all duration-200 flex items-start gap-4 bg-white shadow-sm border-l-4 border-primary-500">
+                                <div class="p-2 bg-primary-50 text-primary-500 rounded-lg shrink-0">
+                                    <i data-lucide="type" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Penggunaan Kata & Binaan Ayat</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Struktur lembut vs kasar</p>
+                                </div>
+                            </button>
+
+                            <button onclick="switchSistemTab(1)" id="sistab-1" class="sistab-btn w-full text-left p-4 rounded-xl transition-all duration-200 flex items-start gap-4 hover:bg-white/60">
+                                <div class="p-2 bg-slate-100 text-slate-500 rounded-lg shrink-0">
+                                    <i data-lucide="volume-2" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-700 text-sm">Sebutan & Intonasi Suara</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Mengawal nada emosi</p>
+                                </div>
+                            </button>
+
+                            <button onclick="switchSistemTab(2)" id="sistab-2" class="sistab-btn w-full text-left p-4 rounded-xl transition-all duration-200 flex items-start gap-4 hover:bg-white/60">
+                                <div class="p-2 bg-slate-100 text-slate-500 rounded-lg shrink-0">
+                                    <i data-lucide="pencil" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-700 text-sm">Ejaan & Tanda Baca</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Etika teks dalam talian</p>
+                                </div>
+                            </button>
+
+                            <button onclick="switchSistemTab(3)" id="sistab-3" class="sistab-btn w-full text-left p-4 rounded-xl transition-all duration-200 flex items-start gap-4 hover:bg-white/60">
+                                <div class="p-2 bg-slate-100 text-slate-500 rounded-lg shrink-0">
+                                    <i data-lucide="briefcase" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-700 text-sm">Laras Bahasa</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Kesesuaian suasana & khalayak</p>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Tab Content / Details Panel -->
+                        <div class="lg:col-span-8 p-8 sm:p-12" id="sistem-tab-content">
+                            <!-- Dynamically loaded content goes here (initially set to Tab 0) -->
+                            <div class="space-y-6">
+                                <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-semibold">Dimensi 1</span>
+                                <h3 class="font-serif-elegant text-2xl font-bold text-primary-900">Penggunaan Kata & Binaan Ayat</h3>
+                                <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                                    Cara menyusun ayat penyata, ayat permintaan, atau ayat perintah memainkan peranan kritikal agar ia kedengaran lembut dan menghormati pendengar. Menukar struktur ayat arahan langsung kepada frasa pelawaan secara drastik mengubah persepsi emosi penerima.
+                                </p>
+                                
+                                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 mt-6">
+                                    <h4 class="font-bold text-sm text-slate-700 uppercase tracking-wider mb-4">Contoh Perbandingan Praktikal</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-red-50/60 p-4 rounded-xl border border-red-100">
+                                            <span class="text-xs font-bold text-red-600 block mb-1">Kurang Santun / Agresif:</span>
+                                            <p class="text-slate-700 font-medium">"Duduk! Cepat sikit!"</p>
+                                            <p class="text-xs text-slate-500 mt-1">Menggunakan kata perintah langsung yang berbaur paksaan.</p>
+                                        </div>
+                                        <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-100">
+                                            <span class="text-xs font-bold text-emerald-600 block mb-1">Santun & Beradab:</span>
+                                            <p class="text-slate-700 font-medium">"Sila duduk, puan. Silakan."</p>
+                                            <p class="text-xs text-slate-500 mt-1">Menggunakan partikel sapaan lembut dan kata ajakan hormat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== VIEW 4: ISU KESANTUNAN (BLOG) ==================== -->
+        <section id="view-isu" class="view-section hidden">
+            <div class="bg-primary-50 py-12 border-b border-primary-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <span class="text-xs font-bold text-primary-500 uppercase tracking-widest">Seksyen C</span>
+                    <h1 class="font-serif-elegant text-3xl sm:text-4xl font-bold text-primary-900 mt-1">Ruangan Ulasan: Isu & Cabaran Kesantunan Masa Kini</h1>
+                    <p class="text-slate-600 mt-2 max-w-3xl">Membincangkan realiti kemerosotan kesantunan berbahasa dalam masyarakat hari ini berserta ulasan klip berita rasmi.</p>
+                </div>
+            </div>
+
+            <!-- Blog Articles Section -->
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Isu 1 -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 transition-all flex flex-col group">
+                        <div class="bg-primary-900 p-6 text-white relative overflow-hidden h-48 flex flex-col justify-between">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary-600/30 to-slate-950/80"></div>
+                            <div class="relative z-10 flex justify-between items-center">
+                                <span class="bg-red-500 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Kritikal</span>
+                                <span class="text-xs text-slate-300">Harian Metro</span>
+                            </div>
+                            <h2 class="relative z-10 font-serif-elegant text-xl sm:text-2xl font-bold line-clamp-2">Toksik Digital & Media Sosial</h2>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col justify-between">
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Lambakan komen berbaur makian, fitnah, dan bahasa kurang sopan dalam kalangan netizen di platform digital. Keadaan ini memerlukan pemantauan ketat serta didikan adab siber yang murni.
+                            </p>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 mb-4 flex items-center justify-between text-xs">
+                                <span class="text-slate-500">Klip Berita Harian Metro</span>
+                                <a href="https://youtube.com/shorts/dClc09Ps83U?si=li3hjKWpiO32K7h-" target="_blank" class="text-primary-500 hover:underline font-bold inline-flex items-center gap-1">
+                                    Tonton Shorts <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                            <div class="mt-2 pt-4 border-t border-slate-100 flex justify-between items-center">
+                                <span class="text-xs text-slate-400 inline-flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 4 Minit Bacaan</span>
+                                <button onclick="readArticle(1)" class="text-xs font-bold text-primary-500 hover:text-primary-700 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Ulasan & Embed <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Isu 2 -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 transition-all flex flex-col group">
+                        <div class="bg-primary-900 p-6 text-white relative overflow-hidden h-48 flex flex-col justify-between">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-slate-950/80"></div>
+                            <div class="relative z-10 flex justify-between items-center">
+                                <span class="bg-amber-500 text-slate-900 text-xs px-2.5 py-1 rounded-full font-semibold">Pendidikan</span>
+                                <span class="text-xs text-slate-300">Buletin TV3</span>
+                            </div>
+                            <h2 class="relative z-10 font-serif-elegant text-xl sm:text-2xl font-bold line-clamp-2">Komunikasi Guru dan Murid</h2>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col justify-between">
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Hakisan nilai hormat murid terhadap guru dalam bilik darjah fizikal mahupun dalam group WhatsApp kelas yang semakin mencabar keharmonian akademik sekolah.
+                            </p>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 mb-4 flex items-center justify-between text-xs">
+                                <span class="text-slate-500">Klip Berita Buletin TV3</span>
+                                <a href="https://youtu.be/rwGePJSR-A0?si=ZAIrjv_9bBGc7zSw" target="_blank" class="text-primary-500 hover:underline font-bold inline-flex items-center gap-1">
+                                    Tonton Berita <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                            <div class="mt-2 pt-4 border-t border-slate-100 flex justify-between items-center">
+                                <span class="text-xs text-slate-400 inline-flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 3 Minit Bacaan</span>
+                                <button onclick="readArticle(2)" class="text-xs font-bold text-primary-500 hover:text-primary-700 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Ulasan & Embed <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Isu 3 -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 transition-all flex flex-col group">
+                        <div class="bg-primary-900 p-6 text-white relative overflow-hidden h-48 flex flex-col justify-between">
+                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-slate-950/80"></div>
+                            <div class="relative z-10 flex justify-between items-center">
+                                <span class="bg-blue-500 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Generasi</span>
+                                <span class="text-xs text-slate-300">Sosio-Budaya</span>
+                            </div>
+                            <h2 class="relative z-10 font-serif-elegant text-xl sm:text-2xl font-bold line-clamp-2">Jurang Komunikasi Antara Generasi</h2>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col justify-between">
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Penggunaan bahasa slanga moden oleh generasi muda yang kadangkala dianggap kurang sopan atau biadab oleh generasi tua serta veteran profesional dalam industri korporat.
+                            </p>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
+                                <span class="text-xs text-slate-400 inline-flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 5 Minit Bacaan</span>
+                                <button onclick="readArticle(3)" class="text-xs font-bold text-primary-500 hover:text-primary-700 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Baca Analisis <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Isu 4 -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 transition-all flex flex-col group">
+                        <div class="bg-primary-900 p-6 text-white relative overflow-hidden h-48 flex flex-col justify-between">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-slate-950/80"></div>
+                            <div class="relative z-10 flex justify-between items-center">
+                                <span class="bg-rose-500 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Sensitif</span>
+                                <span class="text-xs text-slate-300">Utusan Malaysia</span>
+                            </div>
+                            <h2 class="relative z-10 font-serif-elegant text-xl sm:text-2xl font-bold line-clamp-2">Keharmonian Masyarakat Majmuk</h2>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col justify-between">
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Isu sensitiviti kaum dan agama yang dicetuskan akibat kegagalan memilih perkataan yang santun dalam perbincangan terbuka atau forum siber awam.
+                            </p>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 mb-4 flex items-center justify-between text-xs">
+                                <span class="text-slate-500">Klip Berita Utusan Malaysia</span>
+                                <a href="https://youtu.be/Ckd2bZCM58g?si=uP9P7RmQcKAwm7xE" target="_blank" class="text-primary-500 hover:underline font-bold inline-flex items-center gap-1">
+                                    Tonton Berita <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                            <div class="mt-2 pt-4 border-t border-slate-100 flex justify-between items-center">
+                                <span class="text-xs text-slate-400 inline-flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 4 Minit Bacaan</span>
+                                <button onclick="readArticle(4)" class="text-xs font-bold text-primary-500 hover:text-primary-700 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Ulasan & Embed <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== VIEW 5: CADANGAN & SOLUSI ==================== -->
+        <section id="view-cadangan" class="view-section hidden">
+            <div class="bg-primary-50 py-12 border-b border-primary-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <span class="text-xs font-bold text-primary-500 uppercase tracking-widest">Seksyen D</span>
+                    <h1 class="font-serif-elegant text-3xl sm:text-4xl font-bold text-primary-900 mt-1">Pelan Tindakan & Panduan Penyelesaian</h1>
+                    <p class="text-slate-600 mt-2 max-w-3xl">Mengemukakan langkah konkrit untuk memupuk semula amalan kesantunan bahasa berpandukan warisan dan keperluan generasi pintar siber.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Three Sector Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Sektor 1: Kehidupan Seharian -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all relative overflow-hidden flex flex-col justify-between">
+                        <div>
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 -z-10"></div>
+                            <span class="text-3xl">🏠</span>
+                            <span class="text-xs font-bold text-amber-600 tracking-wider uppercase block mt-4 mb-2">Sektor 1</span>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900">Kehidupan Seharian (Keluarga & Individu)</h3>
+                            <div class="w-12 h-1 bg-amber-500 my-4 rounded-full"></div>
+                            
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Ibu bapa menjadi suri teladan (role model) dengan menggunakan bahasa yang lembut di rumah serta melatih diri dan anak-anak berfikir sebelum bercakap.
+                            </p>
+
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></span>
+                                    Melatih anak-anak mengungkap kata-kata santun seawal usia kecil.
+                                </li>
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></span>
+                                    Mempraktikkan budaya "fikir sebelum bercakap/menulis".
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-slate-50">
+                            <button onclick="openSolutionDetail(1)" class="w-full py-2.5 text-center bg-slate-50 hover:bg-slate-100 text-xs font-bold text-primary-500 rounded-xl transition-colors">Lihat Huraian Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- Sektor 2: Institusi Pendidikan -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all relative overflow-hidden flex flex-col justify-between">
+                        <div>
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 -z-10"></div>
+                            <span class="text-3xl">🏫</span>
+                            <span class="text-xs font-bold text-blue-600 tracking-wider uppercase block mt-4 mb-2">Sektor 2</span>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900">Institusi Pendidikan (Sekolah & Universiti)</h3>
+                            <div class="w-12 h-1 bg-blue-500 my-4 rounded-full"></div>
+                            
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Penerapan elemen kesantunan ke dalam silabus Bahasa Melayu, penganjuran aktiviti "Minggu Kesantunan Bahasa", serta penguatkuasaan disiplin bertutur secara terancang.
+                            </p>
+
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></span>
+                                    Pengintegrasian aspek budi bahasa dalam silibus Bahasa Melayu.
+                                </li>
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></span>
+                                    Menganjurkan kempen serta "Minggu Kesantunan Bahasa".
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-slate-50">
+                            <button onclick="openSolutionDetail(2)" class="w-full py-2.5 text-center bg-slate-50 hover:bg-slate-100 text-xs font-bold text-primary-500 rounded-xl transition-colors">Lihat Huraian Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- Sektor 3: Masyarakat & Media Massa -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all relative overflow-hidden flex flex-col justify-between">
+                        <div>
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 -z-10"></div>
+                            <span class="text-3xl">👥</span>
+                            <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase block mt-4 mb-2">Sektor 3</span>
+                            <h3 class="font-serif-elegant text-xl font-bold text-primary-900">Masyarakat & Media Massa</h3>
+                            <div class="w-12 h-1 bg-emerald-500 my-4 rounded-full"></div>
+                            
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Pelaksanaan kempen kesedaran digital oleh pihak kerajaan (cth: "Klik Dengan Bijak"), penguatkuasaan undang-undang siber yang ketat, dan bimbingan moral pempengaruh digital.
+                            </p>
+
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></span>
+                                    Pelaksanaan kempen berkesan seperti "Klik Dengan Bijak" (MCMC).
+                                </li>
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></span>
+                                    Penguatkuasaan perundangan siber yang tegas terhadap pembuli siber.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-slate-50">
+                            <button onclick="openSolutionDetail(3)" class="w-full py-2.5 text-center bg-slate-50 hover:bg-slate-100 text-xs font-bold text-primary-500 rounded-xl transition-colors">Lihat Huraian Detail</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== VIEW 6: RUJUKAN ==================== -->
+        <section id="view-rujuan" class="view-section hidden">
+            <div class="bg-primary-50 py-12 border-b border-primary-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <span class="text-xs font-bold text-primary-500 uppercase tracking-widest">Seksyen E</span>
+                    <h1 class="font-serif-elegant text-3xl sm:text-4xl font-bold text-primary-900 mt-1">Senarai Rujukan Portal</h1>
+                    <p class="text-slate-600 mt-2 max-w-3xl">Berikut merupakan semua senarai rujukan digital, berita arus perdana, dan sumber pengajaran yang digunakan dalam pembinaan kandungan SantunBahasa.my.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-100 shadow-sm space-y-6">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                        <div class="p-2.5 bg-secondary-50 text-secondary-600 rounded-xl">
+                            <i data-lucide="library" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="font-serif-elegant text-xl sm:text-2xl font-bold text-primary-900">Senarai Rujukan Rasmi</h2>
+                    </div>
+
+                    <div class="divide-y divide-slate-100">
+                        <!-- Rujukan 1 -->
+                        <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-red-50 text-red-600 rounded text-[10px] font-bold uppercase">Berita Awam (Shorts)</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Harian Metro - Ulasan Toksik Media Sosial</h4>
+                                <p class="text-xs text-slate-500">Liputan berkenaan isu toksik digital siber dan hakisan nilai kesantunan.</p>
+                            </div>
+                            <a href="https://youtube.com/shorts/dClc09Ps83U?si=li3hjKWpiO32K7h-" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-primary-500 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
+                                Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Rujukan 2 -->
+                        <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold uppercase">Berita Televisyen</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Buletin TV3 - Komunikasi Guru & Murid</h4>
+                                <p class="text-xs text-slate-500">Isu tataadab pemesejan serta kelakuan pelajar di dalam kumpulan sembang akademik.</p>
+                            </div>
+                            <a href="https://youtu.be/rwGePJSR-A0?si=ZAIrjv_9bBGc7zSw" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-primary-500 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
+                                Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Rujukan 3 -->
+                        <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[10px] font-bold uppercase">Akhbar Kebangsaan</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Utusan Malaysia - Keharmonian Masyarakat</h4>
+                                <p class="text-xs text-slate-500">Pengurusan sensitiviti komunikasi dalam persekitaran bermasyarakat majmuk.</p>
+                            </div>
+                            <a href="https://youtu.be/Ckd2bZCM58g?si=uP9P7RmQcKAwm7xE" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-primary-500 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
+                                Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Rujukan 4 -->
+                        <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-purple-50 text-purple-600 rounded text-[10px] font-bold uppercase">Muzik Latar / Media Terbuka</span>
+                                <h4 class="font-bold text-slate-800 text-sm">SuperSimpleDev - Panduan Lagu Latar</h4>
+                                <p class="text-xs text-slate-500">Sumber audio latar belakang berkualiti tinggi yang diintegrasikan dalam portal ini.</p>
+                            </div>
+                            <a href="https://youtu.be/p1QU3kLFPdg?si=2dhjzuqG_yLgIjPm" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-primary-500 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
+                                Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                             </a>
+                        </div>
+
+
+                        <!-- Rujukan 5 -->
+                        <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[10px] font-bold uppercase"> muzik </span>
+                                <h4 class="font-bold text-slate-800 text-sm">lagu tradisi - muzik latar </h4>
+                                <p class="text-xs text-slate-500">Pengurusan sensitiviti komunikasi dalam persekitaran bermasyarakat majmuk.</p>
+                            </div>
+                            <a href="https://youtu.be/oDbR_TiM-zs?si=pn_BRIBkUhdxHGud" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-primary-500 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
+                                Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== VIEW 7: HUBUNGI KAMI ==================== -->
+        <section id="view-hubungi" class="view-section hidden">
+            <div class="bg-primary-50 py-12 border-b border-primary-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <span class="text-xs font-bold text-primary-500 uppercase tracking-widest">Seksyen F</span>
+                    <h1 class="font-serif-elegant text-3xl sm:text-4xl font-bold text-primary-900 mt-1">Hubungi Kami</h1>
+                    <p class="text-slate-600 mt-2 max-w-3xl">Ada sebarang persoalan, maklum balas, atau cadangan kolaborasi? Sila hubungi sidang redaksi SantunBahasa.my menerusi butiran di bawah.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Contact Info -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div class="bg-primary-900 text-white rounded-3xl p-8 shadow-md relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-primary-700/50 to-primary-900"></div>
+                            <div class="relative z-10 space-y-6">
+                                <h3 class="font-serif-elegant text-2xl font-bold text-secondary-500">Hubungan Rasmi</h3>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    Sebuah usaha murni bertujuan menyediakan wadah rujukan awam bagi mengekalkan kualiti tatanan bahasa, adab siber, dan keluhuran budaya ketimuran.
+                                </p>
+
+                                <div class="space-y-4 pt-4 border-t border-white/10">
+                                    <div class="flex items-start gap-3">
+                                        <div class="p-2 bg-white/10 rounded-lg text-secondary-500 mt-0.5 shrink-0">
+                                            <i data-lucide="mail" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs text-slate-400 block">E-mel Sokongan</span>
+                                            <a href="mailto:zulhaialduramin28@gmail.com" class="text-sm font-medium hover:underline">zulhaialduramin28@gmail.com</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start gap-3">
+                                        <div class="p-2 bg-white/10 rounded-lg text-secondary-500 mt-0.5 shrink-0">
+                                            <i data-lucide="phone" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs text-slate-400 block">Talian Telefon</span>
+                                            <a href="tel:+60134471904" class="text-sm font-medium hover:underline">+60 13 4471904</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start gap-3">
+                                        <div class="p-2 bg-white/10 rounded-lg text-secondary-500 mt-0.5 shrink-0">
+                                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs text-slate-400 block">Lokasi Pejabat</span>
+                                            <span class="text-xs font-medium leading-relaxed block">
+                                                JABATAN HAL EHWAL PELAJAR, INSTITUT PENDIDIKAN GURU KAMPUS KENINGAU, BEG BERKUNCI NO. 11, 89009 KENINGAU, SABAH.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                        <h3 class="font-serif-elegant text-2xl font-bold text-primary-900 mb-6">Hantar Mesej Anda</h3>
+                        
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Penuh</label>
+                                    <input type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Sila masukkan nama penuh anda">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Alamat E-mel</label>
+                                    <input type="email" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="nama@domain.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Subjek Perbincangan</label>
+                                <select class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm">
+                                    <option>Pertanyaan Umum</option>
+                                    <option>Cadangan Kandungan</option>
+                                    <option>Kerjasama Pendidikan</option>
+                                    <option>Aduan Tatabahasa/Kesantunan</option>
+                                    <option>Lain-lain</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Butiran Mesej / Cadangan</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Tuliskan ulasan atau cadangan anda secara sopan..."></textarea>
+                            </div>
+
+                            <!-- Form Status Message Inside Form (Avoid alert) -->
+                            <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+                            <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl shadow-md transition-colors inline-flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i> Hantar Maklum Balas
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="bg-primary-900 text-slate-300 border-t border-primary-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Brand Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <div class="p-2 bg-primary-500 rounded-xl text-white">
+                            <i data-lucide="book-open" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-serif-elegant font-bold text-xl tracking-tight text-white">SantunBahasa<span class="text-secondary-500">.my</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        "Bahasa Menunjukkan Bangsa." Portal inklusif berpandukan warisan luhur demi mendidik generasi siber yang berintelektual, bertatabahasa, dan berbudaya tinggi.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors" title="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors" title="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors" title="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Fast Links -->
+                <div class="lg:col-span-3 space-y-4">
+                    <h4 class="text-xs font-bold text-secondary-500 uppercase tracking-widest">Pautan Pantas</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Dasar Privasi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terma Penggunaan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Peta Laman</a></li>
+                        <li><a href="#" onclick="navigateTo('hubungi'); return false;" class="hover:text-white transition-colors">Pusat Hubungan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div class="lg:col-span-4 space-y-4">
+                    <h4 class="text-xs font-bold text-secondary-500 uppercase tracking-widest">Langganan Buletin</h4>
+                    <p class="text-slate-400 text-sm">Masukkan e-mel anda untuk menerima tips bulanan amalan kesantunan bahasa.</p>
+                    
+                    <form onsubmit="handleNewsletterSubmit(event)" class="space-y-2">
+                        <div class="flex gap-2">
+                            <input type="email" id="newsletter-email" required class="flex-grow px-4 py-2.5 bg-white/10 focus:bg-white/20 border border-white/10 rounded-xl focus:ring-1 focus:ring-secondary-500 focus:outline-none text-sm text-white placeholder-slate-400" placeholder="Masukkan alamat e-mel anda">
+                            <button type="submit" class="px-5 py-2.5 bg-secondary-500 hover:bg-secondary-600 text-primary-900 font-bold rounded-xl transition-colors text-sm">Langgan</button>
+                        </div>
+                        <div id="newsletter-feedback" class="text-xs hidden pt-1"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+                <p>© 2026 SantunBahasa.my. Hak Cipta Terpelihara.</p>
+                <p>Dilestarikan dengan penuh takzim untuk warisan nusa.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==================== INTERACTIVE MODALS / DETAILED OVERLAYS ==================== -->
+    <!-- Modal Container -->
+    <div id="global-modal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+            
+            <!-- Center elements -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            
+            <!-- Modal Box -->
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full border border-slate-100">
+                <div class="bg-primary-900 px-6 py-4 text-white flex justify-between items-center">
+                    <h3 class="font-serif-elegant font-bold text-lg" id="modal-title">Tajuk Maklumat</h3>
+                    <button onclick="closeModal()" class="text-slate-300 hover:text-white transition-colors">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div class="p-6 sm:p-8 overflow-y-auto max-h-[75vh]" id="modal-body">
+                    <!-- Dynamic modal content goes here -->
+                </div>
+                <div class="bg-slate-50 px-6 py-4 flex justify-end">
+                    <button onclick="closeModal()" class="px-5 py-2 text-sm font-semibold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors">
+                        Tutup Paparan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Music Button (Floating bottom-right with standard state control) -->
+    <button onclick="toggleMusic()"
+    class="fixed bottom-6 right-6 z-50 bg-primary-500 text-white p-4 rounded-full shadow-lg hover:bg-primary-600 transition-all hover:scale-105"
+    title="Pasang / Matikan Muzik Latar">
+        <i data-lucide="volume-x" id="musicIcon" class="w-6 h-6"></i>
+    </button>
+
+
+    <!-- ==================== JAVASCRIPT CONTROLLER LOGIC ==================== -->
+    <script>
+        let musicPlaying = false;
+
+        function toggleMusic() {
+            const music = document.getElementById("bgMusic");
+            const icon = document.getElementById("musicIcon");
+
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+                icon.setAttribute("data-lucide", "volume-x");
+            } else {
+                // Try playing audio (handles browser interaction policies)
+                music.play().then(() => {
+                    musicPlaying = true;
+                    icon.setAttribute("data-lucide", "volume-2");
+                    lucide.createIcons();
+                }).catch(err => {
+                    console.log("Autoplay dikesan dilarang oleh browser. Sila klik butang sekali lagi.");
+                });
+            }
+            lucide.createIcons();
+        }
+
+        // Start Lucide Icons after DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+
+        // SPA Navigation Logic
+        function navigateTo(targetViewId) {
+            // Hide all views
+            const views = document.querySelectorAll('.view-section');
+            views.forEach(v => v.classList.add('hidden'));
+
+            // Show target view
+            const targetView = document.getElementById('view-' + targetViewId);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update active state on Desktop Navbar Buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-primary-500', 'font-semibold', 'bg-primary-50');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById('nav-' + targetViewId);
+            if (activeBtn) {
+                activeBtn.classList.add('text-primary-500', 'font-semibold', 'bg-primary-50');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            // Update active state on Mobile Navbar Buttons
+            const mobileButtons = document.querySelectorAll('.mobile-nav-btn');
+            mobileButtons.forEach(mBtn => {
+                mBtn.classList.remove('text-primary-500', 'bg-primary-50');
+                mBtn.classList.add('text-slate-600');
+            });
+
+            // If menu was open, close it
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+        }
+
+        // Mobile Menu Toggling
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        // Switch Tabs for Section B (Sistem Bahasa)
+        function switchSistemTab(index) {
+            // Uncheck active tabs
+            const tabButtons = document.querySelectorAll('.sistab-btn');
+            tabButtons.forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow-sm', 'border-l-4', 'border-primary-500');
+                btn.classList.add('hover:bg-white/60');
+                // update internal divs text styles
+                const headers = btn.querySelectorAll('h4');
+                headers.forEach(h => h.classList.replace('text-slate-800', 'text-slate-700'));
+                const iconBox = btn.querySelector('.shrink-0');
+                if (iconBox) {
+                    iconBox.classList.replace('bg-primary-50', 'bg-slate-100');
+                    iconBox.classList.replace('text-primary-500', 'text-slate-500');
+                }
+            });
+
+            // Set current tab active
+            const currentBtn = document.getElementById('sistab-' + index);
+            if (currentBtn) {
+                currentBtn.classList.add('bg-white', 'shadow-sm', 'border-l-4', 'border-primary-500');
+                currentBtn.classList.remove('hover:bg-white/60');
+                
+                const header = currentBtn.querySelector('h4');
+                if (header) header.classList.replace('text-slate-700', 'text-slate-800');
+                
+                const iconBox = currentBtn.querySelector('.shrink-0');
+                if (iconBox) {
+                    iconBox.classList.replace('bg-slate-100', 'bg-primary-50');
+                    iconBox.classList.replace('text-slate-500', 'text-primary-500');
+                }
+            }
+
+            // Change actual panel text contents
+            const contentBox = document.getElementById('sistem-tab-content');
+            let contentHTML = '';
+
+            switch(index) {
+                case 0:
+                    contentHTML = `
+                        <div class="space-y-6">
+                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-semibold">Dimensi 1</span>
+                            <h3 class="font-serif-elegant text-2xl font-bold text-primary-900">Penggunaan Kata & Binaan Ayat</h3>
+                            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                                Cara menyusun ayat penyata, ayat permintaan, atau ayat perintah memainkan peranan kritikal agar ia kedengaran lembut dan menghormati pendengar. Menukar struktur ayat arahan langsung kepada frasa pelawaan secara drastik mengubah persepsi emosi penerima.
+                            </p>
+                            
+                            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 mt-6">
+                                <h4 class="font-bold text-sm text-slate-700 uppercase tracking-wider mb-4">Contoh Perbandingan Praktikal</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-red-50/60 p-4 rounded-xl border border-red-100">
+                                        <span class="text-xs font-bold text-red-600 block mb-1">Kurang Santun / Agresif:</span>
+                                        <p class="text-slate-700 font-medium">"Duduk! Cepat sikit!"</p>
+                                        <p class="text-xs text-slate-500 mt-1">Menggunakan kata perintah langsung yang berbaur paksaan.</p>
+                                    </div>
+                                    <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-100">
+                                        <span class="text-xs font-bold text-emerald-600 block mb-1">Santun & Beradab:</span>
+                                        <p class="text-slate-700 font-medium">"Sila duduk, puan. Silakan."</p>
+                                        <p class="text-xs text-slate-500 mt-1">Menggunakan partikel sapaan lembut dan kata ajakan hormat.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 1:
+                    contentHTML = `
+                        <div class="space-y-6">
+                            <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-semibold">Dimensi 2</span>
+                            <h3 class="font-serif-elegant text-2xl font-bold text-primary-900">Sebutan & Intonasi</h3>
+                            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                                Mengawal nada suara semasa pertuturan secara lisan. Intonasi suara yang tenang dan rendah melambangkan kematangan emosi serta penghormatan yang tinggi kepada pihak yang mendengar. Sebaliknya, nada yang keras atau tinggi boleh menimbulkan kekeliruan emosi.
+                            </p>
+                            
+                            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 mt-6">
+                                <h4 class="font-bold text-sm text-slate-700 uppercase tracking-wider mb-4">Kesan Aliran Nada Suara</h4>
+                                <div class="space-y-4">
+                                    <div class="flex gap-3 items-start">
+                                        <div class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="trending-up" class="w-4 h-4"></i></div>
+                                        <div>
+                                            <span class="font-semibold text-slate-800 text-sm">Intonasi Tinggi / Terburu-buru</span>
+                                            <p class="text-xs text-slate-500 mt-0.5">Sering ditafsirkan sebagai lambang kemarahan, penolakan, atau kurang sabar walaupun menggunakan kata yang biasa.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 items-start">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="trending-down" class="w-4 h-4"></i></div>
+                                        <div>
+                                            <span class="font-semibold text-slate-800 text-sm">Intonasi Sederhana Rendah / Tenang</span>
+                                            <p class="text-xs text-slate-500 mt-0.5">Menunjukkan rasa hormat, keterbukaan fikiran, dan melahirkan keyakinan serta rasa selamat bagi penerima komunikasi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 2:
+                    contentHTML = `
+                        <div class="space-y-6">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Dimensi 3</span>
+                            <h3 class="font-serif-elegant text-2xl font-bold text-primary-900">Ejaan & Tanda Baca (Komunikasi Bertulis)</h3>
+                            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                                Di alam siber atau pemesejan, ejaan serta tanda baca mengambil alih tugas suara dan riak wajah. Pematuhan kepada hukum tatabahasa serta mengelakkan penulisan kasar menentukan tahap kesantunan teks bertulis anda.
+                            </p>
+                            
+                            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 mt-6">
+                                <h4 class="font-bold text-sm text-slate-700 uppercase tracking-wider mb-4">Prinsip Penting Teks Santun</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200">
+                                        <span class="text-xs font-bold text-red-600 block mb-1">Amalan Buruk:</span>
+                                        <p class="text-sm font-semibold text-slate-800">"HANTAR TUGASAN SEKARANG !!!!"</p>
+                                        <p class="text-xs text-slate-500 mt-1">Menggunakan CAPS LOCK (melambangkan jeritan) dan tanda seru berlebihan.</p>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200">
+                                        <span class="text-xs font-bold text-emerald-600 block mb-1">Amalan Terbaik:</span>
+                                        <p class="text-sm font-semibold text-slate-800">"Mohon kerjasama untuk menghantar tugasan sebelum tamat waktu persekolahan, terima kasih."</p>
+                                        <p class="text-xs text-slate-500 mt-1">Bahasa beradab, tiada jeritan siber, menggunakan tanda baca sewajarnya.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 3:
+                    contentHTML = `
+                        <div class="space-y-6">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">Dimensi 4</span>
+                            <h3 class="font-serif-elegant text-2xl font-bold text-primary-900">Laras Bahasa</h3>
+                            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                                Kebolehan memilih laras bahasa yang tepat mengikut situasi. Kepekaan menyesuaikan diksi amat dituntut demi menghormati hadirin yang berada di sekeliling kita.
+                            </p>
+                            
+                            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 mt-6">
+                                <h4 class="font-bold text-sm text-slate-700 uppercase tracking-wider mb-4">Penggunaan Mengikut Konteks</h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center p-3 bg-white rounded-lg border border-slate-100">
+                                        <span class="text-sm font-bold text-primary-500">Laras Bahasa Rasmi</span>
+                                        <span class="text-xs text-slate-500 font-medium">Contoh: Semasa sesi temu duga, surat-menyurat kerajaan, mesyuarat korporat.</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-3 bg-white rounded-lg border border-slate-100">
+                                        <span class="text-sm font-bold text-secondary-500">Laras Bahasa Mesra</span>
+                                        <span class="text-xs text-slate-500 font-medium">Contoh: Berbual santai bersama ahli keluarga, rakan karib, atau kejiranan.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+
+            contentBox.innerHTML = contentHTML;
+            lucide.createIcons();
+        }
+
+        // Handle Interactive Detail Modals for Gaya Kesantunan
+        function showInteractiveDetail(category, index) {
+            const titleEl = document.getElementById('modal-title');
+            const bodyEl = document.getElementById('modal-body');
+
+            let titleText = '';
+            let bodyHTML = '';
+
+            if (category === 'gaya') {
+                switch(index) {
+                    case 1:
+                        titleText = 'Bahasa Sapaan - Contoh & Amalan';
+                        bodyHTML = `
+                            <div class="space-y-4">
+                                <p class="text-slate-600 text-sm">Masyarakat Malaysia memandang berat adab memanggil atau menyapa seseorang berdasarkan kedudukan sosial atau hubungan kekeluargaan.</p>
+                                <div class="bg-slate-100 rounded-2xl overflow-hidden border border-slate-200">
+                                    <div class="bg-slate-200 px-4 py-2 text-xs font-bold text-slate-700 flex items-center gap-1.5 border-b border-slate-200">
+                                        <i data-lucide="image" class="w-4 h-4"></i> Rujukan Fail: kata gelaran.png
+                                    </div>
+                                    <img src="kata gelaran.png" alt="Peta Minda Kata Gelaran" onerror="this.onerror=null; this.src='https://placehold.co/800x450/123c4b/ffffff?text=kata+gelaran.png';" class="w-full h-auto object-cover max-h-96 mx-auto">
+                                </div>
+                                <div class="bg-primary-50 p-4 rounded-2xl border border-primary-100 space-y-3 text-sm">
+                                    <p class="font-semibold text-primary-900">Pembahagian Kata Gelaran:</p>
+                                    <ul class="list-disc list-inside space-y-1.5 text-slate-700">
+                                        <li><strong>Peringkat Keluarga:</strong> Ayahanda, Bonda, Abang, Kakak, Pak Cik, Mak Cik.</li>
+                                        <li><strong>Peringkat Akademik:</strong> Profesor, Doktor (Dr.), Encik, Puan, Tuan Guru.</li>
+                                        <li><strong>Peringkat Diraja & Kerajaan:</strong> Yang Amat Berhormat (YAB), Yang Berhormat (YB), Tan Sri, Dato' / Datuk.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 2:
+                        titleText = 'Bahasa Kiasan & Peribahasa';
+                        bodyHTML = `
+                            <div class="space-y-4">
+                                <p class="text-slate-600 text-sm">Masyarakat melayu amat bijaksana menyampaikan pesanan atau kritikan dengan menggunakan keindahan alam semula jadi sebagai kiasan halus.</p>
+                                <div class="bg-slate-100 rounded-2xl overflow-hidden border border-slate-200">
+                                    <div class="bg-slate-200 px-4 py-2 text-xs font-bold text-slate-700 flex items-center gap-1.5 border-b border-slate-200">
+                                        <i data-lucide="image" class="w-4 h-4"></i> Rujukan Fail: peribahasa.png
+                                    </div>
+                                    <img src="peribahasa.png" alt="Infografik Peribahasa" onerror="this.onerror=null; this.src='https://placehold.co/800x450/123c4b/ffffff?text=peribahasa.png';" class="w-full h-auto object-cover max-h-96 mx-auto">
+                                </div>
+                                <div class="bg-primary-50 p-4 rounded-2xl border border-primary-100 text-sm space-y-2">
+                                    <p class="font-bold text-primary-900">Peribahasa: "Seperti pahat dengan penukul"</p>
+                                    <p class="text-slate-700">Maksud tersirat: Seseorang yang hanya akan melakukan tugasan apabila disuruh atau dipaksa secara berulang kali.</p>
+                                    <p class="text-xs text-slate-500 italic mt-2">"Mengajar kita agar proaktif tanpa dipaksa."</p>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 3:
+                        titleText = 'Pantun Nasihat & Adab';
+                        bodyHTML = `
+                            <div class="space-y-4">
+                                <p class="text-slate-600 text-sm">Pantun merupakan medium puitis klasik yang sering digubah khas untuk mengingatkan insan tentang peri pentingnya menjaga akhlak lisan.</p>
+                                <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-100 text-center text-sm font-serif-elegant italic space-y-2 text-primary-900">
+                                    <p>Yang kurik itu kundi,</p>
+                                    <p>Yang merah itu saga;</p>
+                                    <p>Yang baik itu budi,</p>
+                                    <p>Yang indah itu bahasa.</p>
+                                </div>
+                                <p class="text-sm text-slate-600">Pantun di atas menunjukkan betapa tingginya nilai budi dan bahasa berbanding perkara-perkara fizikal di dunia ini.</p>
+                            </div>
+                        `;
+                        break;
+                    case 4:
+                        titleText = 'Pengurusan Air Muka';
+                        bodyHTML = `
+                            <div class="space-y-4">
+                                <p class="text-slate-600 text-sm">Konsep 'air muka' merujuk kepada maruah, harga diri, dan kedudukan sosial seseorang dalam masyarakat awam.</p>
+                                <div class="bg-slate-100 rounded-2xl overflow-hidden border border-slate-200">
+                                    <div class="bg-slate-200 px-4 py-2 text-xs font-bold text-slate-700 flex items-center gap-1.5 border-b border-slate-200">
+                                        <i data-lucide="image" class="w-4 h-4"></i> Rujukan Fail: cara jaga air muka.png
+                                    </div>
+                                    <img src="cara jaga air muka.png" alt="Grafik Air Muka" onerror="this.onerror=null; this.src='https://placehold.co/800x450/123c4b/ffffff?text=cara+jaga+air+muka.png';" class="w-full h-auto object-cover max-h-96 mx-auto">
+                                </div>
+                                <div class="bg-primary-50 p-4 rounded-2xl border border-primary-100 text-sm space-y-3">
+                                    <p class="font-semibold text-primary-900">Tiga Cara Utama Menjaga Air Muka Orang Lain:</p>
+                                    <ol class="list-decimal list-inside space-y-2 text-slate-700">
+                                        <li><strong>Menegur Secara Tertutup:</strong> Memilih masa & tempat berdua untuk mengelakkan rasa malu depan khalayak.</li>
+                                        <li><strong>Menyediakan Alasan Selamat:</strong> Memberi ruang untuk membaiki diri tanpa rasa dipermalukan.</li>
+                                        <li><strong>Gunakan Struktur Positif:</strong> Hargai ➜ Tegur ➜ Cadang ➜ Sokong.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 5:
+                        titleText = 'Bahasa Terbalik - Teknik Menegur';
+                        bodyHTML = `
+                            <div class="space-y-4">
+                                <p class="text-slate-600 text-sm">Bahasa terbalik ialah kaedah sindiran halus tradisional bertujuan mendidik tanpa menimbulkan pergaduhan fizikal.</p>
+                                <div class="bg-slate-100 rounded-2xl overflow-hidden border border-slate-200">
+                                    <div class="bg-slate-200 px-4 py-2 text-xs font-bold text-slate-700 flex items-center gap-1.5 border-b border-slate-200">
+                                        <i data-lucide="image" class="w-4 h-4"></i> Rujukan Fail: skenario.png
+                                    </div>
+                                    <img src="skenario.png" alt="Skenario Bahasa Terbalik" onerror="this.onerror=null; this.src='https://placehold.co/800x450/123c4b/ffffff?text=skenario.png';" class="w-full h-auto object-cover max-h-96 mx-auto">
+                                </div>
+                                <div class="bg-primary-50 p-4 rounded-2xl border border-primary-100 text-sm space-y-2">
+                                    <p class="font-semibold text-primary-900">Contoh Skenario Sembelih Malam:</p>
+                                    <p class="text-slate-700 italic">"Bagus sangatlah tidur lewat lagi malam ni, esok subuh bolehlah bangun pukul lapan pagi."</p>
+                                    <p class="text-xs text-slate-500 mt-2"><strong>Maksud Sebenar:</strong> Menghormati hati dan mendidik agar tidur awal serta bertanggungjawab.</p>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 6:
+                        titleText = 'Ungkapan Santun (Tiga Perkataan Ajaib)';
+                        bodyHTML = `
+                            <div class="space-y-4">
+                                <p class="text-slate-600 text-sm">Hubungan manusia yang paling kompleks sekalipun boleh dilembutkan dengan pembiasaan tiga perkataan utama yang wajib diamalkan sejak kecil.</p>
+                                <div class="grid grid-cols-3 gap-3 text-center">
+                                    <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                                        <span class="text-xl block">🙏</span>
+                                        <span class="font-bold text-emerald-800 block mt-1">Tolong</span>
+                                        <p class="text-[10px] text-slate-500 mt-1">Menghilangkan elemen paksaan.</p>
+                                    </div>
+                                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                        <span class="text-xl block">💖</span>
+                                        <span class="font-bold text-blue-800 block mt-1">Terima Kasih</span>
+                                        <p class="text-[10px] text-slate-500 mt-1">Menghargai budi kecil & besar.</p>
+                                    </div>
+                                    <div class="p-4 bg-purple-50 rounded-xl border border-purple-100">
+                                        <span class="text-xl block">🙇‍♂️</span>
+                                        <span class="font-bold text-purple-800 block mt-1">Maaf</span>
+                                        <p class="text-[10px] text-slate-500 mt-1">Menurunkan ego kesilapan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                }
+            }
+
+            titleEl.textContent = titleText;
+            bodyEl.innerHTML = bodyHTML;
+            
+            // Show modal
+            document.getElementById('global-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        // Read blog/article detail modal
+        function readArticle(id) {
+            const titleEl = document.getElementById('modal-title');
+            const bodyEl = document.getElementById('modal-body');
+
+            let titleText = '';
+            let bodyHTML = '';
+
+            switch(id) {
+                case 1:
+                    titleText = 'Toksik Digital & Media Sosial';
+                    bodyHTML = `
+                        <div class="space-y-4">
+                            <span class="inline-flex px-2.5 py-1 rounded bg-red-100 text-red-700 text-xs font-bold">Isu 1 - Harian Metro</span>
+                            <div class="aspect-video rounded-xl overflow-hidden bg-black">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/dClc09Ps83U" title="Harian Metro Clip" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <p class="text-slate-700 text-sm leading-relaxed">
+                                Lambakan komen berbaur makian, fitnah, dan bahasa kurang sopan di siber disebabkan kesan nyahsekat digital. Pengguna bersembunyi di sebalik identiti palsu siber yang melahirkan keberanian toksik yang memudaratkan maruah orang lain.
+                            </p>
+                        </div>
+                    `;
+                    break;
+                case 2:
+                    titleText = 'Komunikasi Guru dan Murid';
+                    bodyHTML = `
+                        <div class="space-y-4">
+                            <span class="inline-flex px-2.5 py-1 rounded bg-indigo-100 text-indigo-700 text-xs font-bold">Isu 2 - Buletin TV3</span>
+                            <div class="aspect-video rounded-xl overflow-hidden bg-black">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/rwGePJSR-A0" title="TV3 Clip" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <p class="text-slate-700 text-sm leading-relaxed">
+                                Kejadian hakisan adab dan rasa hormat murid terhadap guru dalam ruang persekolahan serta pemesejan kelas WhatsApp. Pembiasaan menggunakan slanga siber kasar mencabar kewibawaan bidang pendidikan.
+                            </p>
+                        </div>
+                    `;
+                    break;
+                case 3:
+                    titleText = 'Jurang Komunikasi Antara Generasi';
+                    bodyHTML = `
+                        <div class="space-y-4">
+                            <span class="inline-flex px-2.5 py-1 rounded bg-emerald-100 text-emerald-700 text-xs font-bold">Isu 3 - Generasi</span>
+                            <p class="text-slate-700 text-sm leading-relaxed">
+                                Generasi Z dan Alpha kerap menggunakan singkatan ekstrem dan slanga internet yang tidak sesuai dengan persekitaran bertatasusila tradisional Melayu. Ini melahirkan salah faham yang mendalam dengan generasi veteran.
+                            </p>
+                        </div>
+                    `;
+                    break;
+                case 4:
+                    titleText = 'Keharmonian Masyarakat Majmuk';
+                    bodyHTML = `
+                        <div class="space-y-4">
+                            <span class="inline-flex px-2.5 py-1 rounded bg-rose-100 text-rose-700 text-xs font-bold">Isu 4 - Utusan Malaysia</span>
+                            <div class="aspect-video rounded-xl overflow-hidden bg-black">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/Ckd2bZCM58g" title="Utusan Clip" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <p class="text-slate-700 text-sm leading-relaxed">
+                                Penulisan hantaran terbuka menyentuh isu kebudayaan, kaum atau agama tanpa penyusunan bahasa beradab melahirkan provokasi dan merosakkan jalinan harmoni perpaduan nasional negara.
+                            </p>
+                        </div>
+                    `;
+                    break;
+            }
+
+            titleEl.textContent = titleText;
+            bodyEl.innerHTML = bodyHTML;
+            document.getElementById('global-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        // Show Solution Detail Modal
+        function openSolutionDetail(sectorId) {
+            const titleEl = document.getElementById('modal-title');
+            const bodyEl = document.getElementById('modal-body');
+
+            let titleText = '';
+            let bodyHTML = '';
+
+            switch(sectorId) {
+                case 1:
+                    titleText = 'Solusi Sektor 1: Kehidupan Seharian & Individu';
+                    bodyHTML = `
+                        <div class="space-y-4 text-sm">
+                            <p class="text-slate-700">Pendidikan kesantunan bermula dari rumah. Ibu bapa bertindak sebagai agen primer dalam memahat adab dan sahsiah berbahasa.</p>
+                            <div class="bg-primary-50 p-4 rounded-2xl space-y-3">
+                                <h4 class="font-bold text-primary-900">Pelan Tindakan Praktikal:</h4>
+                                <ul class="list-decimal list-inside space-y-2 text-slate-600">
+                                    <li><strong>Suri Teladan (Role Model):</strong> Ibu bapa dilarang bertutur kasar atau menjerit di hadapan anak-anak.</li>
+                                    <li><strong>Sesi Sembang Adab:</strong> Mengadakan sesi santai mingguan membincangkan maksud budi pekerti serta peribahasa warisan.</li>
+                                    <li><strong>Latihan Berfikir 5 Saat:</strong> Melatih ahli keluarga berfikir sebelum memulakan percakapan; adakah kata-kata itu benar, bermanfaat, dan tidak menyakitkan hati?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 2:
+                    titleText = 'Solusi Sektor 2: Institusi Pendidikan';
+                    bodyHTML = `
+                        <div class="space-y-4 text-sm">
+                            <p class="text-slate-700">Pendidikan formal berupaya menerapkan integriti berbahasa secara tersusun menerusi kurikulum kebangsaan.</p>
+                            <div class="bg-primary-50 p-4 rounded-2xl space-y-3">
+                                <h4 class="font-bold text-primary-900">Pelan Tindakan Praktikal:</h4>
+                                <ul class="list-decimal list-inside space-y-2 text-slate-600">
+                                    <li><strong>Silabus Holistik:</strong> Menyepadukan komponen kesantunan lisan dan adab siber ke dalam sukatan mata pelajaran Bahasa Melayu dan Pendidikan Moral.</li>
+                                    <li><strong>Minggu Budi Bahasa:</strong> Penganjuran pertandingan debat berhemah, deklamasi puisi, dan lakonan kesantunan di peringkat sekolah.</li>
+                                    <li><strong>Peraturan & Disiplin Bertutur:</strong> Mengenakan tindakan amaran membina bagi pelajar yang didapati menggunakan slanga kotor atau kurang ajar terhadap rakan atau guru.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 3:
+                    titleText = 'Solusi Sektor 3: Masyarakat & Media Massa';
+                    bodyHTML = `
+                        <div class="space-y-4 text-sm">
+                            <p class="text-slate-700">Gabungan perundangan siber dan kempen masyarakat secara menyeluruh bagi memelihura moral kebangsaan.</p>
+                            <div class="bg-primary-50 p-4 rounded-2xl space-y-3">
+                                <h4 class="font-bold text-primary-900">Pelan Tindakan Praktikal:</h4>
+                                <ul class="list-decimal list-inside space-y-2 text-slate-600">
+                                    <li><strong>Kekuatan Undang-Undang Siber:</strong> MCMC memperhebat tindakan terhadap akaun-akaun siber yang didapati menyebarkan kebencian ekstrem atau membuli secara lisan.</li>
+                                    <li><strong>Kempen Kesedaran Awam:</strong> Meluaskan promosi slogan seperti "Klik Dengan Bijak" melalui media massa arus perdana dan papan iklan digital lebuh raya.</li>
+                                    <li><strong>Tanggungjawab Influencer:</strong> Syarikat jenama menyokong pempengaruh (influencer) yang menonjolkan kualiti bercakap dengan sopan dan memberi impak moral tinggi.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+
+            titleEl.textContent = titleText;
+            bodyEl.innerHTML = bodyHTML;
+            document.getElementById('global-modal').classList.remove('hidden');
+        }
+
+        // Close global modal
+        function closeModal() {
+            document.getElementById('global-modal').classList.add('hidden');
+        }
+
+        // Contact Form Submission Handler (Mock - No page refresh)
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const feedback = document.getElementById('form-feedback');
+            
+            feedback.className = "p-4 rounded-xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-100";
+            feedback.innerHTML = `
+                <div class="flex items-start gap-2">
+                    <span class="text-base">🎉</span>
+                    <div>
+                        <strong>Terima Kasih!</strong> Maklum balas anda telah berjaya dihantar ke <strong>zulhaialduramin28@gmail.com</strong>. Sidang redaksi akan berhubung secepat mungkin.
+                    </div>
+                </div>
+            `;
+            feedback.classList.remove('hidden');
+
+            setTimeout(() => {
+                event.target.reset();
+            }, 500);
+
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 8000);
+        }
+
+        // Newsletter Subscription Handler (Mock - No page refresh)
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+            const feedback = document.getElementById('newsletter-feedback');
+            const emailInput = document.getElementById('newsletter-email');
+
+            feedback.className = "text-xs pt-1 text-emerald-400 font-medium";
+            feedback.textContent = `Pendaftaran Berjaya! (${emailInput.value}) Terima kasih kerana menyokong kami.`;
+            feedback.classList.remove('hidden');
+
+            emailInput.value = '';
+
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
