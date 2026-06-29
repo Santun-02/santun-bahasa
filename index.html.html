@@ -1548,29 +1548,7 @@
         }
 
         // Contact Form Submission Handler (Mock - No page refresh)
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            const feedback = document.getElementById('form-feedback');
-            
-            feedback.className = "p-4 rounded-xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-100";
-            feedback.innerHTML = `
-                <div class="flex items-start gap-2">
-                    <span class="text-base">🎉</span>
-                    <div>
-                        <strong>Terima Kasih!</strong> Maklum balas anda telah berjaya dihantar ke <strong>zulhaialduramin28@gmail.com</strong>. Sidang redaksi akan berhubung secepat mungkin.
-                    </div>
-                </div>
-            `;
-            feedback.classList.remove('hidden');
-
-            setTimeout(() => {
-                event.target.reset();
-            }, 500);
-
-            setTimeout(() => {
-                feedback.classList.add('hidden');
-            }, 8000);
-        }
+    
 function handleContactSubmit(event) {
     event.preventDefault(); // Elak page daripada di-refresh
 
