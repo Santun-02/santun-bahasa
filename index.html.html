@@ -1564,10 +1564,7 @@
             
             // Menggunakan action URL borang (samada web3forms atau Google Script)
             const submitUrl = form.getAttribute('action') || 'https://api.web3forms.com/submit';
-
-        
-    // Tukar URL di bawah dengan URL Google Web App anda
-    const googleScriptUrl = 'https://script.google.com/macros/s/AKfycby6wya9BGgCTjdaUXYzVn6IPnJZRB1Qu2GFvXeiTJEAJgbAm4_lvhmzye_4cgvGfV_r/exec';
+             const submitUrl = form.getAttribute('action') || 'https://script.google.com/macros/s/AKfycby6wya9BGgCTjdaUXYzVn6IPnJZRB1Qu2GFvXeiTJEAJgbAm4_lvhmzye_4cgvGfV_r/exec';
 
     // Tukar teks butang tanda sedang diproses
     const submitBtn = form.querySelector('button[type="submit"]');
