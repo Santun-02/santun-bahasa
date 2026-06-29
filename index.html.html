@@ -396,7 +396,7 @@
                             </div>
                             <h3 class="font-serif-elegant text-xl font-bold text-primary-900 group-hover:text-primary-500 transition-colors">Ungkapan Santun</h3>
                             <p class="text-slate-600 mt-3 text-sm leading-relaxed mb-4">
-                                Pembiasaan perkataan ajaib asas harian seperti <em>"Tolong"</em>, <em>"Terima Kasih"</em>, dan <em>"Maaf"</em>.
+                                Pembiasaan perkataan ajaib asas harian seperti <em>"Tolong"</em>, <em>"Terima Kasih"</em>, and <em>"Maaf"</em>.
                             </p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between">
@@ -800,7 +800,6 @@
                              </a>
                         </div>
 
-
                         <!-- Rujukan 5 -->
                         <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                             <div class="space-y-1">
@@ -810,9 +809,6 @@
                             </div>
                             <a href="https://youtu.be/oDbR_TiM-zs?si=pn_BRIBkUhdxHGud" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-primary-500 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
                                 Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                            </a>
-                        </div>
-
                             </a>
                         </div>
                     </div>
@@ -880,44 +876,50 @@
                         </div>
                     </div>
 
-                    <!-- Contact Form -->
-   <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-    
-    <input type="hidden" name="access_key" value="tfp_HiwhMe5nXRxgYWm2QEmbTZbhXahufk4H1NpXKWRrBqvw_3sprGkYdU9eDgB">
+                    <!-- Contact Form Container -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                        <form action="https://api.web3forms.com/submit" method="POST" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                            <!-- Web3Forms Access Key / Google Apps Script Key -->
+                            <input type="hidden" name="access_key" value="tfp_HiwhMe5nXRxgYWm2QEmbTZbhXahufk4H1NpXKWRrBqvw_3sprGkYdU9eDgB">
 
-    <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Penuh</label>
-        <input type="text" name="Nama Penuh" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Sila masukkan nama penuh anda">
-    </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Penuh</label>
+                                <input type="text" name="Nama Penuh" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all text-sm" placeholder="Sila masukkan nama penuh anda">
+                            </div>
 
-    <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Alamat E-mel</label>
-        <input type="email" name="E-mel" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl" placeholder="nama@domain.com">
-    </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Alamat E-mel</label>
+                                <input type="email" name="E-mel" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all text-sm" placeholder="nama@domain.com">
+                            </div>
 
-    <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Subjek Perbincangan</label>
-        <select name="Subjek" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl">
-            <option>Pertanyaan Umum</option>
-            <option>Cadangan Kandungan</option>
-            <option>Kerjasama Pendidikan</option>
-        </select>
-    </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Subjek Perbincangan</label>
+                                <select name="Subjek" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all text-sm">
+                                    <option>Pertanyaan Umum</option>
+                                    <option>Cadangan Kandungan</option>
+                                    <option>Kerjasama Pendidikan</option>
+                                </select>
+                            </div>
 
-    <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Butiran Mesej</label>
-        <textarea name="Mesej" rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Tuliskan ulasan..."></textarea>
-    </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Butiran Mesej</label>
+                                <textarea name="Mesej" rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all text-sm" placeholder="Tuliskan ulasan..."></textarea>
+                            </div>
 
-    <div class="flex justify-end">
-        <button type="submit" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl text-sm">
-            Hantar Mesej
-        </button>
-    </div>
-</form>
+                            <div class="flex justify-end">
+                                <button type="submit" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl text-sm transition-colors flex items-center gap-2">
+                                    Hantar Mesej
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- Close Grid -->
+            </div> <!-- Close Container -->
+        </section>
+    </main>
 
     <!-- Footer Area -->
-    <footer class="bg-primary-900 text-slate-300 border-t border-primary-700">
+    <footer class="bg-primary-900 text-slate-300 border-t border-primary-700 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <!-- Brand Info Column -->
@@ -1497,7 +1499,7 @@
                             <div class="bg-primary-50 p-4 rounded-2xl space-y-3">
                                 <h4 class="font-bold text-primary-900">Pelan Tindakan Praktikal:</h4>
                                 <ul class="list-decimal list-inside space-y-2 text-slate-600">
-                                    <li><strong>Silabus Holistik:</strong> Menyepadukan komponen kesantunan lisan dan adab siber ke dalam sukatan mata pelajaran Bahasa Melayu dan Pendidikan Moral.</li>
+                                    <li><strong>Silabus Holistik:</strong> Menyepadukan components kesantunan lisan dan adab siber ke dalam sukatan mata pelajaran Bahasa Melayu dan Pendidikan Moral.</li>
                                     <li><strong>Minggu Budi Bahasa:</strong> Penganjuran pertandingan debat berhemah, deklamasi puisi, dan lakonan kesantunan di peringkat sekolah.</li>
                                     <li><strong>Peraturan & Disiplin Bertutur:</strong> Mengenakan tindakan amaran membina bagi pelajar yang didapati menggunakan slanga kotor atau kurang ajar terhadap rakan atau guru.</li>
                                 </ul>
@@ -1526,6 +1528,7 @@
             titleEl.textContent = titleText;
             bodyEl.innerHTML = bodyHTML;
             document.getElementById('global-modal').classList.remove('hidden');
+            lucide.createIcons();
         }
 
         // Close global modal
@@ -1533,37 +1536,68 @@
             document.getElementById('global-modal').classList.add('hidden');
         }
 
-        // Contact Form Submission Handler (Mock - No page refresh)
-    
-function handleContactSubmit(event) {
-    event.preventDefault(); // Elak page daripada di-refresh
+        // Helper function to show beautiful in-app notifications without system alert()
+        function showNotification(title, message, type = 'success') {
+            const titleEl = document.getElementById('modal-title');
+            const bodyEl = document.getElementById('modal-body');
 
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    // Tukar URL di bawah dengan URL Google Web App anda
-    const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbzQvgeERZfxBIRCl9soDUngu9hxWTO0cSUYQdPJVfh8mj-d1dGG8S0jVwVBpFNFEt_f/exec';
+            titleEl.textContent = title;
+            bodyEl.innerHTML = `
+                <div class="flex flex-col items-center text-center p-6 space-y-4">
+                    <div class="w-16 h-16 rounded-full ${type === 'success' ? 'bg-emerald-50 text-emerald-500' : 'bg-rose-50 text-rose-500'} flex items-center justify-center">
+                        <i data-lucide="${type === 'success' ? 'check-circle' : 'alert-circle'}" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800">${title}</h4>
+                    <p class="text-sm text-slate-600 max-w-md">${message}</p>
+                </div>
+            `;
+            document.getElementById('global-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
 
-    // Tukar teks butang tanda sedang diproses
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerText;
-    submitBtn.innerText = "Menghantar...";
-    submitBtn.disabled = true;
+        // Contact Form Submission Handler (Supports both Web3Forms & custom Google script)
+        function handleContactSubmit(event) {
+            event.preventDefault(); // Elak page daripada di-refresh
 
-    fetch(googleScriptUrl, { method: 'POST', body: formData})
-        .then(response => {
-            alert('Mesej berjaya dihantar!');
-            form.reset(); // Kosongkan borang semula
-        })
-        .catch(error => {
-            console.error('Ralat!', error.message);
-            alert('Gagal menghantar mesej. Sila cuba lagi.');
-        })
-        .finally(() => {
-            submitBtn.innerText = originalText;
-            submitBtn.disabled = false;
-        });
-}
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Menggunakan action URL borang (samada web3forms atau Google Script)
+            const submitUrl = form.getAttribute('action') || 'https://api.web3forms.com/submit';
+
+            // Menukar status butang tanda sedang diproses
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `<span class="inline-flex items-center gap-2"><i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Menghantar...</span>`;
+            submitBtn.disabled = true;
+            lucide.createIcons();
+
+            fetch(submitUrl, { 
+                method: 'POST', 
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showNotification('Mesej Berjaya Dihantar!', 'Terima kasih atas maklum balas anda. Pihak sidang redaksi kami akan meneliti dan memberi respons secepat mungkin.', 'success');
+                    form.reset(); // Kosongkan borang semula
+                } else {
+                    throw new Error('Penghantaran borang gagal.');
+                }
+            })
+            .catch(error => {
+                console.error('Ralat!', error.message);
+                showNotification('Penghantaran Gagal', 'Sila pastikan sambungan internet anda stabil dan cuba sebentar lagi.', 'error');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                lucide.createIcons();
+            });
+        }
+
         // Newsletter Subscription Handler (Mock - No page refresh)
         function handleNewsletterSubmit(event) {
             event.preventDefault();
