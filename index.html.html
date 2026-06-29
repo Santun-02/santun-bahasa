@@ -881,36 +881,40 @@
                     </div>
 
                     <!-- Contact Form -->
-                    <div class="lg:col-span-7 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                        <h3 class="font-serif-elegant text-2xl font-bold text-primary-900 mb-6">Hantar Mesej Anda</h3>
-                        
-                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Penuh</label>
-                                    <input type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Sila masukkan nama penuh anda">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Alamat E-mel</label>
-                                    <input type="email" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="nama@domain.com">
-                                </div>
-                            </div>
+   <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+    
+    <input type="hidden" name="access_key" value="tfp_HiwhMe5nXRxgYWm2QEmbTZbhXahufk4H1NpXKWRrBqvw_3sprGkYdU9eDgB">
 
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Subjek Perbincangan</label>
-                                <select class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm">
-                                    <option>Pertanyaan Umum</option>
-                                    <option>Cadangan Kandungan</option>
-                                    <option>Kerjasama Pendidikan</option>
-                                    <option>Aduan Tatabahasa/Kesantunan</option>
-                                    <option>Lain-lain</option>
-                                </select>
-                            </div>
+    <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Penuh</label>
+        <input type="text" name="Nama Penuh" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Sila masukkan nama penuh anda">
+    </div>
 
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Butiran Mesej / Cadangan</label>
-                                <textarea rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm" placeholder="Tuliskan ulasan atau cadangan anda secara sopan..."></textarea>
-                            </div>
+    <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Alamat E-mel</label>
+        <input type="email" name="E-mel" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl" placeholder="nama@domain.com">
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Subjek Perbincangan</label>
+        <select name="Subjek" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl">
+            <option>Pertanyaan Umum</option>
+            <option>Cadangan Kandungan</option>
+            <option>Kerjasama Pendidikan</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Butiran Mesej</label>
+        <textarea name="Mesej" rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Tuliskan ulasan..."></textarea>
+    </div>
+
+    <div class="flex justify-end">
+        <button type="submit" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl text-sm">
+            Hantar Mesej
+        </button>
+    </div>
+</form>
 
                             <!-- Form Status Message Inside Form (Avoid alert) -->
                             <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium"></div>
