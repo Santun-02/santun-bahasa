@@ -1930,34 +1930,48 @@
         }
 
         // ==================== BORANG HUBUNGI & KEMAS KINI DATA ====================
+         // Contact Form Submission Handler (Supports both Web3Forms & custom Google script)
         function handleContactSubmit(event) {
-            event.preventDefault();
+            event.preventDefault(); // Elak page daripada di-refresh
 
             const form = event.target;
             const formData = new FormData(form);
-            const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbx8_NQv74ZjAe7SEx8HO-t4JGGl8Az0jMPwBWhEfCyfavYgmTpDetHd2WZ97_51oj9B/exec';
+            
+            // Menggunakan action URL borang (samada web3forms atau Google Script)
+            const submitUrl = form.getAttribute('action') || 'https://api.web3forms.com/submit';
 
+            // Menukar status butang tanda sedang diproses
             const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = "Menghantar...";
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `<span class="inline-flex items-center gap-2"><i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Menghantar...</span>`;
             submitBtn.disabled = true;
+            lucide.createIcons();
 
-            fetch(googleScriptUrl, { method: 'POST', body: formData })
-                .then(response => {
-                    // Digantikan dengan notifikasi dalaman modal premium berbanding alert() sistem kasar
-                    showNotification('Mesej Dihantar!', 'Maklum balas anda telah berjaya dihantar ke sistem kami. Sidang redaksi akan meneliti maklumat yang diberikan.', 'success');
-                    form.reset();
-                })
-                .catch(error => {
-                    console.error('Ralat!', error.message);
-                    showNotification('Hantaran Gagal', 'Dukacita dimaklumkan, penghantaran mesej menghadapi ralat teknikal. Sila cuba lagi sebentar.', 'error');
-                })
-                .finally(() => {
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                });
+            fetch(submitUrl, { 
+                method: 'POST', 
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showNotification('Mesej Berjaya Dihantar!', 'Terima kasih atas maklum balas anda. Pihak sidang redaksi kami akan meneliti dan memberi respons secepat mungkin.', 'success');
+                    form.reset(); // Kosongkan borang semula
+                } else {
+                    throw new Error('Penghantaran borang gagal.');
+                }
+            })
+            .catch(error => {
+                console.error('Ralat!', error.message);
+                showNotification('Penghantaran Gagal', 'Sila pastikan sambungan internet anda stabil dan cuba sebentar lagi.', 'error');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                lucide.createIcons();
+            });
         }
-
         // Newsletter Subscription Handler
         function handleNewsletterSubmit(event) {
             event.preventDefault();
